@@ -10,6 +10,7 @@
   --mgd-border-soft: #20242b;
   --mgd-text: #f3f4f6;
   --mgd-muted: #a5abb5;
+  --mgd-logo: url('/assets/img/mgd-git-mark.svg');
 
   --color-primary: var(--mgd-red);
   --color-primary-hover: var(--mgd-red-hi);
@@ -27,257 +28,78 @@
   color-scheme: dark;
 }
 
-html, body {
-  background: var(--mgd-page) !important;
+html, body, button, input, textarea, select, .ui, .ui.button, .ui.menu, .ui.form input, .ui.form textarea {
+  font-family: Arial, Helvetica, sans-serif !important;
 }
 
+html, body { background: var(--mgd-page) !important; }
 body {
   color: var(--mgd-text);
-  background-image:
-    radial-gradient(circle at 84% -8%, rgba(226, 27, 45, .11), transparent 34rem),
-    radial-gradient(circle at 15% 110%, rgba(226, 27, 45, .035), transparent 28rem) !important;
+  background-image: radial-gradient(circle at 84% -8%, rgba(226,27,45,.09), transparent 29rem), radial-gradient(circle at 15% 110%, rgba(226,27,45,.03), transparent 25rem) !important;
   background-attachment: fixed !important;
 }
 
-/* Navigation and surfaces */
-.ui.menu,
-.ui.segment,
-.ui.segments,
-.ui.card,
-.ui.cards > .card,
-.repository.file.list,
-.ui.table {
-  background: var(--mgd-surface) !important;
-  border-color: var(--mgd-border) !important;
+/* MGD Git brand mark. The SVG asset is installed beside the theme. */
+.page-header .logo img,
+.page-header a.item.brand img,
+.ui.main.menu a.item.brand img,
+.ui.main.menu .item.brand img {
+  opacity: 0 !important;
+  width: 30px !important;
+}
+.page-header .logo,
+.page-header a.item.brand,
+.ui.main.menu a.item.brand,
+.ui.main.menu .item.brand {
+  position: relative;
+}
+.page-header .logo::before,
+.page-header a.item.brand::before,
+.ui.main.menu a.item.brand::before,
+.ui.main.menu .item.brand::before {
+  content: '';
+  display: inline-block;
+  width: 30px;
+  height: 30px;
+  background: var(--mgd-logo) center/contain no-repeat;
+  vertical-align: middle;
 }
 
-.ui.menu {
-  box-shadow: 0 1px 0 rgba(255,255,255,.025), 0 14px 36px rgba(0,0,0,.16);
-}
-
-.ui.menu .item:hover {
-  background: rgba(255,255,255,.035) !important;
-  color: #fff !important;
-}
-
-.ui.menu .active.item {
-  background: linear-gradient(180deg, rgba(226,27,45,.10), rgba(226,27,45,.055)) !important;
-  color: #fff !important;
-  box-shadow: inset 0 -2px 0 var(--mgd-red);
-}
-
-/* Keep red meaningful instead of turning every link into an alert */
-a {
-  color: #d9dde5;
-}
-
-a:hover {
-  color: #fff;
-}
-
-.repository-title a,
-.repo-title a,
-.repository.list .item .name a,
-.user.profile .repository.list a.name,
-.dashboard .feeds .news a {
-  color: var(--mgd-red-soft) !important;
-}
-
-.repository-title a:hover,
-.repo-title a:hover,
-.repository.list .item .name a:hover,
-.user.profile .repository.list a.name:hover,
-.dashboard .feeds .news a:hover {
-  color: #ff8994 !important;
-}
-
-/* Buttons */
-.ui.primary.button,
-.ui.green.button,
-.ui.red.button {
-  background: linear-gradient(135deg, #bd1020, var(--mgd-red)) !important;
-  color: #fff !important;
-  border: 1px solid rgba(255,255,255,.06) !important;
-  box-shadow: 0 6px 18px rgba(226,27,45,.16) !important;
-}
-
-.ui.primary.button:hover,
-.ui.green.button:hover,
-.ui.red.button:hover {
-  background: linear-gradient(135deg, var(--mgd-red), var(--mgd-red-hi)) !important;
-  box-shadow: 0 8px 24px rgba(226,27,45,.25) !important;
-}
-
-.ui.button {
-  border-radius: 8px !important;
-}
-
-.ui.basic.button,
-.ui.basic.buttons .button {
-  background: var(--mgd-surface) !important;
-  color: #e4e7ec !important;
-  border-color: var(--mgd-border) !important;
-  box-shadow: none !important;
-}
-
-.ui.basic.button:hover,
-.ui.basic.buttons .button:hover {
-  background: var(--mgd-elevated) !important;
-  border-color: #3a3f49 !important;
-}
-
-/* Forms */
-.ui.input > input,
-.ui.form input:not([type=checkbox]),
-.ui.form textarea,
-.ui.selection.dropdown {
-  background: #0d0f13 !important;
-  color: var(--mgd-text) !important;
-  border: 1px solid var(--mgd-border) !important;
-  border-radius: 8px !important;
-}
-
-.ui.input > input:focus,
-.ui.form input:focus,
-.ui.form textarea:focus,
-.ui.selection.active.dropdown {
-  border-color: var(--mgd-red) !important;
-  box-shadow: 0 0 0 3px rgba(226,27,45,.11) !important;
-}
-
-.ui.dropdown .menu {
-  background: #0d0f13 !important;
-  border: 1px solid var(--mgd-border) !important;
-  border-radius: 9px !important;
-  box-shadow: 0 14px 38px rgba(0,0,0,.38) !important;
-}
-
-.ui.dropdown .menu > .item {
-  color: #e4e7ec !important;
-}
-
-.ui.dropdown .menu > .item:hover,
-.ui.dropdown .menu > .selected.item {
-  background: rgba(226,27,45,.09) !important;
-  color: #fff !important;
-}
-
-/* Cards and panels */
-.ui.segment,
-.ui.card,
-.ui.cards > .card {
-  border-radius: 10px !important;
-  box-shadow: 0 8px 30px rgba(0,0,0,.13) !important;
-}
-
-.ui.top.attached.header,
-.ui.attached.header,
-.ui.header.segment {
-  background: var(--mgd-elevated) !important;
-  border-color: var(--mgd-border) !important;
-}
-
-.repository .repo-header {
-  background: linear-gradient(180deg, rgba(226,27,45,.035), transparent) !important;
-}
-
-/* Tables and repository file lists */
-.repository.file.list #repo-files-table tr,
-.ui.table tbody tr {
-  border-color: var(--mgd-border-soft) !important;
-}
-
-.repository.file.list #repo-files-table tr:hover,
-.ui.table tbody tr:hover {
-  background: rgba(226,27,45,.035) !important;
-}
-
-/* Labels: preserve semantic Gitea colors. Only neutral labels get dark styling. */
-.ui.label:not(.red):not(.orange):not(.yellow):not(.olive):not(.green):not(.teal):not(.blue):not(.violet):not(.purple):not(.pink):not(.brown) {
-  background: #20232a !important;
-  color: #e5e7eb !important;
-  border-color: #30343d !important;
-}
-
-/* Markdown and code */
-.markdown:not(code),
-.markup {
-  color: #dfe2e7;
-}
-
-.markdown blockquote,
-.markup blockquote {
-  border-left-color: var(--mgd-red) !important;
-  background: rgba(226,27,45,.03);
-}
-
-.markdown h1,
-.markdown h2,
-.markdown h3,
-.markup h1,
-.markup h2,
-.markup h3 {
-  border-color: var(--mgd-border-soft) !important;
-}
-
-pre,
-code,
-.code-view,
-.lines-code {
-  background: #08090b !important;
-}
-
-/* Diffs */
-.diff-file-box {
-  border-color: var(--mgd-border) !important;
-  border-radius: 10px !important;
-  overflow: hidden;
-  box-shadow: 0 8px 26px rgba(0,0,0,.12);
-}
-
-.diff-file-header {
-  background: var(--mgd-elevated) !important;
-  border-color: var(--mgd-border) !important;
-}
-
-/* Progress and focus */
-.ui.progress .bar {
-  background: linear-gradient(90deg, #a70d1b, var(--mgd-red-hi)) !important;
-}
-
-:focus-visible {
-  outline-color: var(--mgd-red) !important;
-}
-
-/* Header polish */
-.page-header,
-.dashboard-navbar,
-.ui.main.menu {
-  background-color: rgba(8,9,11,.94) !important;
-  backdrop-filter: blur(12px);
-}
-
-/* Scrollbars */
-::-webkit-scrollbar {
-  width: 11px;
-  height: 11px;
-}
-
-::-webkit-scrollbar-track {
-  background: var(--mgd-page);
-}
-
-::-webkit-scrollbar-thumb {
-  background: #343840;
-  border: 3px solid var(--mgd-page);
-  border-radius: 10px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: var(--mgd-red);
-}
-
-::selection {
-  background: rgba(226,27,45,.55);
-  color: #fff;
-}
+.ui.menu,.ui.segment,.ui.segments,.ui.card,.ui.cards>.card,.repository.file.list,.ui.table { background:var(--mgd-surface)!important; border-color:var(--mgd-border)!important; }
+.ui.menu { box-shadow:0 1px 0 rgba(255,255,255,.025),0 14px 36px rgba(0,0,0,.16); }
+.ui.menu .item:hover { background:rgba(255,255,255,.035)!important; color:#fff!important; }
+.ui.menu .active.item { background:linear-gradient(180deg,rgba(226,27,45,.10),rgba(226,27,45,.055))!important; color:#fff!important; box-shadow:inset 0 -2px 0 var(--mgd-red); }
+a { color:#d9dde5; }
+a:hover { color:#fff; }
+.repository-title a,.repo-title a,.repository.list .item .name a,.user.profile .repository.list a.name,.dashboard .feeds .news a { color:var(--mgd-red-soft)!important; }
+.repository-title a:hover,.repo-title a:hover,.repository.list .item .name a:hover,.user.profile .repository.list a.name:hover,.dashboard .feeds .news a:hover { color:#ff8994!important; }
+.ui.primary.button,.ui.green.button,.ui.red.button { background:linear-gradient(135deg,#bd1020,var(--mgd-red))!important; color:#fff!important; border:1px solid rgba(255,255,255,.06)!important; box-shadow:0 6px 18px rgba(226,27,45,.14)!important; }
+.ui.primary.button:hover,.ui.green.button:hover,.ui.red.button:hover { background:linear-gradient(135deg,var(--mgd-red),var(--mgd-red-hi))!important; box-shadow:0 8px 24px rgba(226,27,45,.22)!important; }
+.ui.button { border-radius:8px!important; }
+.ui.basic.button,.ui.basic.buttons .button { background:var(--mgd-surface)!important; color:#e4e7ec!important; border-color:var(--mgd-border)!important; box-shadow:none!important; }
+.ui.basic.button:hover,.ui.basic.buttons .button:hover { background:var(--mgd-elevated)!important; border-color:#3a3f49!important; }
+.ui.input>input,.ui.form input:not([type=checkbox]),.ui.form textarea,.ui.selection.dropdown { background:#0d0f13!important; color:var(--mgd-text)!important; border:1px solid var(--mgd-border)!important; border-radius:8px!important; }
+.ui.input>input:focus,.ui.form input:focus,.ui.form textarea:focus,.ui.selection.active.dropdown { border-color:var(--mgd-red)!important; box-shadow:0 0 0 3px rgba(226,27,45,.11)!important; }
+.ui.dropdown .menu { background:#0d0f13!important; border:1px solid var(--mgd-border)!important; border-radius:9px!important; box-shadow:0 14px 38px rgba(0,0,0,.38)!important; }
+.ui.dropdown .menu>.item { color:#e4e7ec!important; }
+.ui.dropdown .menu>.item:hover,.ui.dropdown .menu>.selected.item { background:rgba(226,27,45,.09)!important; color:#fff!important; }
+.ui.segment,.ui.card,.ui.cards>.card { border-radius:10px!important; box-shadow:0 8px 30px rgba(0,0,0,.13)!important; }
+.ui.top.attached.header,.ui.attached.header,.ui.header.segment { background:var(--mgd-elevated)!important; border-color:var(--mgd-border)!important; }
+.repository .repo-header { background:linear-gradient(180deg,rgba(226,27,45,.035),transparent)!important; }
+.repository.file.list #repo-files-table tr,.ui.table tbody tr { border-color:var(--mgd-border-soft)!important; transition:background-color .12s ease; }
+.repository.file.list #repo-files-table tr:hover,.ui.table tbody tr:hover { background:rgba(226,27,45,.055)!important; }
+.ui.label:not(.red):not(.orange):not(.yellow):not(.olive):not(.green):not(.teal):not(.blue):not(.violet):not(.purple):not(.pink):not(.brown) { background:#20232a!important; color:#e5e7eb!important; border-color:#30343d!important; }
+.markdown:not(code),.markup { color:#dfe2e7; }
+.markdown blockquote,.markup blockquote { border-left-color:var(--mgd-red)!important; background:rgba(226,27,45,.03); }
+.markdown h1,.markdown h2,.markdown h3,.markup h1,.markup h2,.markup h3 { border-color:var(--mgd-border-soft)!important; }
+pre,code,.code-view,.lines-code { background:#08090b!important; }
+.diff-file-box { border-color:var(--mgd-border)!important; border-radius:10px!important; overflow:hidden; box-shadow:0 8px 26px rgba(0,0,0,.12); }
+.diff-file-header { background:var(--mgd-elevated)!important; border-color:var(--mgd-border)!important; }
+.ui.progress .bar { background:linear-gradient(90deg,#a70d1b,var(--mgd-red-hi))!important; }
+:focus-visible { outline-color:var(--mgd-red)!important; }
+.page-header,.dashboard-navbar,.ui.main.menu { background-color:rgba(8,9,11,.95)!important; backdrop-filter:blur(12px); }
+::-webkit-scrollbar { width:11px; height:11px; }
+::-webkit-scrollbar-track { background:var(--mgd-page); }
+::-webkit-scrollbar-thumb { background:#343840; border:3px solid var(--mgd-page); border-radius:10px; }
+::-webkit-scrollbar-thumb:hover { background:var(--mgd-red); }
+::selection { background:rgba(226,27,45,.55); color:#fff; }
